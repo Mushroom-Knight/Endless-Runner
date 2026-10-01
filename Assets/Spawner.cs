@@ -7,8 +7,8 @@ public class Spawner : MonoBehaviour
     float timeToNextSpawn;
     float timeSinceLastSpawn = 0.0f;
 
-    public float minSpawnTime = 0.5f;
-    public float maxSpawnTime = 3.0f;
+    public float minSpawnTime = 1.0f;
+    public float maxSpawnTime = 2.0f;
 
 
         private void Start()

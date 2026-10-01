@@ -15,12 +15,9 @@ public class DeathZone : MonoBehaviour
         {
             if (deathManager != null)
             {
-                Invoke("Death", 2);
+                //Invoke("Death",2);
 
-
-                Xshakey = Random.Range(XshakeLow, XshakeHigh);
-                //when you die, move camera 0.4x 0.5x or -0.4 and -0.5
-                //every 0.25 second
+               deathManager.ShowDeathScreen();
             }
 
             else Debug.Log("DeathManager not assigned!");

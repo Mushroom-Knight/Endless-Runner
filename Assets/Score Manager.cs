@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     }
     private void Update()
     {
-        scoreRaw -= Time.deltaTime * 10;
+        scoreRaw += Time.deltaTime * 10;
         score = Mathf.Floor(scoreRaw);
         scoreText.text = "SCORE : " + score.ToString();
     }
