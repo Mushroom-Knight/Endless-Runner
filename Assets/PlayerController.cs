@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public float checkRadius = 0.2f;
     public LayerMask groundLayer;
 
+    public AudioClip jump;
+    AudioSource playerSFX;
+
     private Rigidbody2D rb;
    private bool isGrounded;
     Animator anim;
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
        // Start is called before the first frame update
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerSFX = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -40,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             Jump();
+            playerSFX.PlayOneShot(jump);
         }
 
         anim.SetBool("IsOnGround", isGrounded);
