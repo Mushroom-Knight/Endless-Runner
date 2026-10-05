@@ -22,6 +22,8 @@ public class DeathZone : MonoBehaviour
 
             else Debug.Log("DeathManager not assigned!");
         }
+
+      
     }
     public void Death()
     {
