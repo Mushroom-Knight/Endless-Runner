@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour
    private bool isGrounded;
     Animator anim;
 
+    private float currentHeight = 0f;
+    private float previousHeight = 0f;
+    public bool falling = false;
+    public bool jumping = false;
+
     void Start()
 
     {
@@ -34,22 +40,38 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //constant forward movement
-        rb.linearVelocity = new UnityEngine.Vector2(moveSpeed, rb.linearVelocity.y);
-
-        //check if the player is grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheckpoint.position, checkRadius, groundLayer);
-
-        //jumping logic
-        if (isGrounded && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Jump();
-            playerSFX.PlayOneShot(jump);
-        }
+            currentHeight = rb.linearVelocity.y;
+            previousHeight = currentHeight;
 
-        anim.SetBool("IsOnGround", isGrounded);
-    
-    
+            if (currentHeight < previousHeight)
+            {
+                falling = true;
+            }
+            else
+            {
+                falling = false;
+
+            }
+            //constant forward movement
+            rb.linearVelocity = new UnityEngine.Vector2(moveSpeed, rb.linearVelocity.y);
+
+            //check if the player is grounded
+            isGrounded = Physics2D.OverlapCircle(groundCheckpoint.position, checkRadius, groundLayer);
+
+            //jumping logic
+            if (isGrounded && Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Jump();
+                playerSFX.PlayOneShot(jump);
+            }
+
+            anim.SetBool("IsOnGround", isGrounded);
+            anim.SetBool("jumping", jumping);
+            anim.SetBool("falling", falling);
+
+
+        }
     }
 
 
@@ -58,6 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         //set upward velocity for jumping
         rb.linearVelocity = new UnityEngine.Vector2(rb.linearVelocity.x, jumpForce);
+        jumping = true;
     }
 
     private void OnDrawGizmosSelected()
