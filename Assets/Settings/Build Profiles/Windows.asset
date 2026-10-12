@@ -17,7 +17,11 @@ MonoBehaviour:
   m_Subtarget: 2
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
+<<<<<<< Updated upstream
     rid: 7593616651830952015
+=======
+    rid: 8391388226398191616
+>>>>>>> Stashed changes
   m_ActivePlatformGuid: 
   m_AdditionalPlatformBuildSettings: []
   m_OverrideGlobalSceneList: 0
@@ -30,7 +34,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+<<<<<<< Updated upstream
     - rid: 7593616651830952015
+=======
+    - rid: 8391388226398191616
+>>>>>>> Stashed changes
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
         m_Development: 0
